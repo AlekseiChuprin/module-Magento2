@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var \Study\RandomProducts\Block\RandomProduct $block
+ */
+?>
+
+<h3>Random-products</h3>
+<div class="random-products">
+    <table>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        <?php foreach ($block->randomProducts() as $product):
+            $url = $this->imageHelper->init($product, 'product_thumbnail_image')->getUrl(); ?>
+            <tr>
+                <td><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?php echo $url?>"></a></td>
+                <td><a href="<?php echo $product->getProductUrl(); ?>"><?php echo $product->getName(); ?></a>
+                    <p><?php echo $block->getFormattedPrice($product->getData('price'))?></p>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+
+
+
+
