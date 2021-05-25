@@ -24,7 +24,7 @@ class RandomProduct extends \Magento\Framework\View\Element\Template
     /**
      * @var \Magento\Catalog\Helper\Image
      */
-    public $imageHelper;
+    protected $imageHelper;
 
     /**
      * RandomProduct constructor.
@@ -38,7 +38,8 @@ class RandomProduct extends \Magento\Framework\View\Element\Template
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $collectionFactory,
         \Magento\Framework\Pricing\Helper\Data $priceHelper,
         \Magento\Catalog\Helper\Image $imageHelper
-    ){
+    )
+    {
         parent::__construct($context);
         $this->productCollection = $collectionFactory;
         $this->priceHelper = $priceHelper;
@@ -47,14 +48,15 @@ class RandomProduct extends \Magento\Framework\View\Element\Template
 
     /**
      * @return \Magento\Catalog\Model\ResourceModel\Product\Collection
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function randomProducts()
+    public function getRandomProduct()
     {
         $randomProducts = $this->productCollection->create();
-        $randomProducts->addAttributeToSelect('*');
+        $randomProducts->addAttributeToSelect(['name', 'price', 'thumbnail']);
         $randomProducts->setPageSize(self::COUNT_RANDOM_PRODUCTS);
         $randomProducts->getSelect()->orderRand();
-        $randomProducts->setVisibility([4]);
+        $randomProducts->setVisibility([\Magento\Catalog\Model\Product\Visibility::VISIBILITY_BOTH]);
 
         return $randomProducts;
     }
@@ -66,5 +68,10 @@ class RandomProduct extends \Magento\Framework\View\Element\Template
     public function getFormattedPrice($price)
     {
         return $this->priceHelper->currency($price, true, false);
+    }
+
+    public function getImageUrl($product)
+    {
+        return $this->imageHelper->init($product, 'product_thumbnail_image')->getUrl();
     }
 }

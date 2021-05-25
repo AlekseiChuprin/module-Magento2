@@ -1,3 +1,4 @@
+
 <?php
 /**
  * @var \Study\RandomProducts\Block\RandomProduct $block
@@ -11,8 +12,8 @@
             <th></th>
             <th></th>
         </tr>
-        <?php foreach ($block->randomProducts() as $product):
-            $url = $this->imageHelper->init($product, 'product_thumbnail_image')->getUrl(); ?>
+        <?php foreach ($block->getRandomProduct() as $product):
+            $url = $block->getImageUrl($product); ?>
             <tr>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?php echo $url?>"></a></td>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><?php echo $product->getName(); ?></a>
