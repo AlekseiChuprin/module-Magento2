@@ -53,7 +53,7 @@ class RandomProduct extends \Magento\Framework\View\Element\Template
     public function getRandomProduct()
     {
         $randomProducts = $this->productCollection->create();
-        $randomProducts->addAttributeToSelect(['name', 'price', 'thumbnail']);
+        $randomProducts->addAttributeToSelect(['name', 'price', 'thumbnail', 'show_yes_no', 'custom_dropdown']);
         $randomProducts->setPageSize(self::COUNT_RANDOM_PRODUCTS);
         $randomProducts->getSelect()->orderRand();
         $randomProducts->setVisibility([\Magento\Catalog\Model\Product\Visibility::VISIBILITY_BOTH]);

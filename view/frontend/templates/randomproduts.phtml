@@ -17,6 +17,9 @@
             <tr>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?php echo $url?>"></a></td>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><?php echo $product->getName(); ?></a>
+                    <?php if($product->getData('show_yes_no')): ?>
+                        <span><?php echo $product->getData('custom_dropdown'); ?></span>
+                    <?php endif; ?>
                     <p><?php echo $block->getFormattedPrice($product->getData('price'))?></p>
                 </td>
             </tr>
