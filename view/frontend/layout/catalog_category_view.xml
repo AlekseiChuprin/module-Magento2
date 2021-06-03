@@ -7,6 +7,6 @@
                 <argument name="wishlistDataViewModel" xsi:type="object">Magento\Wishlist\ViewModel\WishlistData</argument>
             </arguments>
         </block>
-        <block class="Study\RandomProducts\Block\RandomProduct" name="study_random_product" template="Study_RandomProducts::randomproduts.phtml" after="wishlist_sidebar"/>
+        <block class="Study\RandomProducts\Block\RandomProduct" name="study_random_product" template="Study_RandomProducts::random-produts.phtml" after="wishlist_sidebar"/>
     </referenceContainer>
 </page>
