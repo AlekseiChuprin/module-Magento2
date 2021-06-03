@@ -3,10 +3,9 @@
 /**
  * @var \Study\RandomProducts\Block\RandomProduct $block
  */
-
 ?>
 
-<h3>Random-products</h3>
+<h3><?php echo __('Random products');?></h3>
 <div class="random-products">
     <table>
         <tr>
@@ -18,8 +17,8 @@
             <tr>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?php echo $url?>"></a></td>
                 <td><a href="<?php echo $product->getProductUrl(); ?>"><?php echo $product->getName(); ?></a>
-                    <?php if($product->getData('show_yes_no')): ?>
-                        <span><?php echo $product->getData('custom_dropdown'); ?></span>
+                    <?php if($product->getShow_brand()): ?>
+                        <span><?php echo $product->getBrand(); ?></span>
                     <?php endif; ?>
                     <p><?php echo $block->getFormattedPrice($product->getData('price'))?></p>
                 </td>
