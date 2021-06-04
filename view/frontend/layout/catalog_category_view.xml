@@ -2,11 +2,6 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
     <referenceContainer name="sidebar.additional">
-        <block class="Magento\Wishlist\Block\Customer\Sidebar" name="wishlist_sidebar" as="wishlist" template="Magento_Wishlist::sidebar.phtml" ifconfig="wishlist/general/show_in_sidebar">
-            <arguments>
-                <argument name="wishlistDataViewModel" xsi:type="object">Magento\Wishlist\ViewModel\WishlistData</argument>
-            </arguments>
-        </block>
         <block class="Study\RandomProducts\Block\RandomProduct" name="study_random_product" template="Study_RandomProducts::random-products.phtml" after="wishlist_sidebar"/>
     </referenceContainer>
 </page>
